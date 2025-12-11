@@ -18,7 +18,7 @@ export default function HomeScreen() {
       >
         {/* MAIN CONTENT */}
         <ProfileHeader />
-        <View style={styles.profileContainer}>
+        <View style={styles.userInfoContainer}>
           <Image source={userPlaceholder} style={styles.userImage}></Image>
           <View>
             <Text style={styles.username}>[@username]</Text>
@@ -27,6 +27,13 @@ export default function HomeScreen() {
           <View>
             <Image source={squarePen} style={styles.editIcon}></Image>
           </View>
+        </View>
+        <View style={styles.profileStatsContainer}>
+          <Text style={styles.statsText}>Location: Tulsa, Oklahoma</Text>
+          <Text style={styles.statsText}>Joined in 2025</Text>
+        </View>
+        <View style={styles.separatorContainer}>
+          <View style={styles.separator}></View>
         </View>
       </LinearGradient>
     </View>
@@ -40,7 +47,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginRight: 5,
   },
-  profileContainer: {
+  userInfoContainer: {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems:'center',
@@ -62,5 +69,23 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     marginLeft: 100,
+  },
+  profileStatsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 30,
+  },
+  statsText: {
+    color: 'white',
+    fontFamily: 'Nature-Light',
+  },
+  separator: {
+    backgroundColor: 'white',
+    width: '85%',
+    height: '2%',
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 20,
   }
 });
