@@ -18,7 +18,7 @@ export default function diinkerHeader() {
           text: "Yes",
           style: "cancel",
           onPress: () => {
-            router.replace('/login')
+            router.replace('/landing')
           },
         }
       ],
