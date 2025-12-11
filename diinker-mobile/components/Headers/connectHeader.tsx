@@ -29,8 +29,8 @@ export default function diinkerHeader() {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.textContainer}>
-        <Text style={styles.headerName}>diinker</Text>
-        <Text style={styles.headerSubtitle}>Welcome, Zack!</Text>
+        <Text style={styles.headerName}>Connect</Text>
+        <Text style={styles.headerSubtitle}>Pair your diinker sensor via{'\n'}bluetooth to track your stats</Text>
       </View>
       <View style={styles.iconContainer}>
         <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>

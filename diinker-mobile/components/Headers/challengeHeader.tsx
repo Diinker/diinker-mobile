@@ -29,8 +29,8 @@ export default function diinkerHeader() {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.textContainer}>
-        <Text style={styles.headerName}>diinker</Text>
-        <Text style={styles.headerSubtitle}>Welcome, Zack!</Text>
+        <Text style={styles.headerName}>Challenge</Text>
+        <Text style={styles.headerSubtitle}>Compete against your{'\n'}friends...or your enemies</Text>
       </View>
       <View style={styles.iconContainer}>
         <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Nature-Light',
     fontSize: 16,
     color: 'white',
+
   },
   iconContainer: {
     flexDirection: 'row',

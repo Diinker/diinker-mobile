@@ -1,42 +1,43 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Image } from 'react-native';
-
-import { HapticTab } from '@/components/haptic-tab';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-const houseIcon = require('../../assets/images/house.png');
-const swordsIcon = require('../../assets/images/swords.png');
-const bluetoothIcon = require('../../assets/images/bluetooth.png');
-const graphIcon = require('../../assets/images/graph.png');
-const userIcon = require('../../assets/images/user.png');
+import { HapticTab } from "@/components/haptic-tab";
+import { Tabs } from "expo-router";
+import React from "react";
+import { Image } from "react-native";
+const houseIcon = require("../../assets/images/house.png");
+const swordsIcon = require("../../assets/images/swords.png");
+const bluetoothIcon = require("../../assets/images/bluetooth.png");
+const graphIcon = require("../../assets/images/graph.png");
+const userIcon = require("../../assets/images/user.png");
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: "#00d5ffff",
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: {
-          backgroundColor: 'black',
-          borderTopColor: 'white',
+          backgroundColor: "black",
+          borderTopColor: "white",
           height: 100,
           paddingTop: 15,
-        }
-      }}>
+        },
+        tabBarLabelStyle: {
+          fontFamily: "Nature-Regular",
+          fontSize: 10,
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: "Home",
           tabBarIcon: () => (
             <Image
               source={houseIcon}
               style={{
                 width: 28,
-                height: 28
+                height: 28,
+                marginBottom: 5,
               }}
             />
           ),
@@ -45,13 +46,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="challenge"
         options={{
-          title: 'Challenge',
+          title: "Challenge",
           tabBarIcon: () => (
             <Image
               source={swordsIcon}
               style={{
                 width: 28,
-                height: 28
+                height: 28,
+                marginBottom: 5,
               }}
             />
           ),
@@ -60,13 +62,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="connect"
         options={{
-          title: 'Connect',
+          title: "Connect",
           tabBarIcon: () => (
             <Image
               source={bluetoothIcon}
               style={{
                 width: 28,
-                height: 28
+                height: 28,
+                marginBottom: 5,
               }}
             />
           ),
@@ -75,13 +78,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="statistics"
         options={{
-          title: 'Statistics',
+          title: "Statistics",
           tabBarIcon: () => (
             <Image
               source={graphIcon}
               style={{
                 width: 28,
-                height: 28
+                height: 28,
+                marginBottom: 5,
               }}
             />
           ),
@@ -90,13 +94,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: "Profile",
           tabBarIcon: () => (
             <Image
               source={userIcon}
               style={{
                 width: 28,
-                height: 28
+                height: 28,
+                marginBottom: 5,
               }}
             />
           ),

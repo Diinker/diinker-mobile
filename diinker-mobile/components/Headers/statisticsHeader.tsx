@@ -29,8 +29,8 @@ export default function diinkerHeader() {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.textContainer}>
-        <Text style={styles.headerName}>diinker</Text>
-        <Text style={styles.headerSubtitle}>Welcome, Zack!</Text>
+        <Text style={styles.headerName}>Statistics</Text>
+        <Text style={styles.headerSubtitle}>View the statistics of your{'\n'}past matches</Text>
       </View>
       <View style={styles.iconContainer}>
         <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>

@@ -29,8 +29,8 @@ export default function diinkerHeader() {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.textContainer}>
-        <Text style={styles.headerName}>diinker</Text>
-        <Text style={styles.headerSubtitle}>Welcome, Zack!</Text>
+        <Text style={styles.headerName}>Profile</Text>
+        <Text style={styles.headerSubtitle}>Your profile, all in one place</Text>
       </View>
       <View style={styles.iconContainer}>
         <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>
