@@ -33,7 +33,9 @@ export default function diinkerHeader() {
         <Text style={styles.headerSubtitle}>Pair your diinker sensor via{'\n'}bluetooth to track your stats</Text>
       </View>
       <View style={styles.iconContainer}>
-        <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>
+        <Pressable onPress={() => Alert.alert("Notifications Triggered", "No new notifications at this time")}>
+          <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>
+        </Pressable>
         <Pressable onPress={handleLogout}>
           <Image source={logoutIcon} style={styles.logoutIcon} />
         </Pressable>

@@ -2,7 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { SplashScreen } from "expo-router";
 import { StyleSheet, Text, View, Image } from "react-native";
 import ProfileHeader from "../../components/Headers/profileHeader";
-const userPlaceholder = require("../../assets/images/user-round.png");
+const userPlaceholder = require("../../assets/images/pickleball.png");
 const squarePen = require("../../assets/images/square-pen.png");
 
 SplashScreen.preventAutoHideAsync();
@@ -29,8 +29,8 @@ export default function HomeScreen() {
           </View>
         </View>
         <View style={styles.profileStatsContainer}>
-          <Text style={styles.statsText}>Location: Tulsa, Oklahoma</Text>
-          <Text style={styles.statsText}>Joined in 2025</Text>
+          <Text style={styles.statsText}>Location: [User&apos;s Location]</Text>
+          <Text style={styles.statsText}>DUPR Rating: [Rating]</Text>
         </View>
         <View>
           <View style={styles.separator}></View>
@@ -41,9 +41,18 @@ export default function HomeScreen() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+            reprehenderit in voluptate velit.
           </Text>
+        </View>
+        <View>
+          <View style={styles.separator}></View>
+        </View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.descriptionText}>Home Center: [Name, Location]</Text>
+          <Text style={styles.descriptionText}>Play Style: [Power, Control, Hybrid]</Text>
+        </View>
+        <View>
+          <View style={styles.separator}></View>
         </View>
       </LinearGradient>
     </View>
@@ -68,7 +77,7 @@ const styles = StyleSheet.create({
   username: {
     color: "white",
     fontFamily: "Nature-Regular",
-    fontSize: 18,
+    fontSize: 24,
   },
   email: {
     color: "white",
@@ -78,7 +87,7 @@ const styles = StyleSheet.create({
   editIcon: {
     width: 30,
     height: 30,
-    marginLeft: 100,
+    marginLeft: 135,
   },
   profileStatsContainer: {
     display: "flex",
@@ -102,5 +111,13 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Nature-Light',
     paddingHorizontal: 30,
-  }
+  },
+  descriptionContainer: {
+    gap: 5,
+  },
+  descriptionText: {
+    color: 'white',
+    fontFamily: 'Nature-Light',
+    paddingHorizontal: 30,
+  },
 });

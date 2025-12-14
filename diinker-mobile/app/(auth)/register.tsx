@@ -12,7 +12,10 @@ const arrowIcon = require("../../assets/images/arrow-left.png");
 
 export default function Register() {
   const goBack = () => {
-    router.replace('/landing');
+    router.replace("/landing");
+  };
+  const handleRegister = () => {
+    router.replace("/");
   };
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -41,6 +44,13 @@ export default function Register() {
           <View style={styles.fieldWrapper}>
             <Text style={styles.loginParam}>Your password</Text>
             <TextInput style={styles.textInput} />
+          </View>
+          <View style={styles.fieldWrapper}>
+            <Pressable style={styles.registerButton} onPress={handleRegister}>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>Create Account</Text>
+              </View>
+            </Pressable>
           </View>
         </View>
       </View>
@@ -111,10 +121,24 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 16,
     color: "white",
-  },
+  }, 
   loginParam: {
     fontFamily: "Nature-Regular",
     color: "white",
     marginBottom: 10,
+  },
+  registerButton: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginTop: 5,
+  },
+  buttonContainer: {
+    padding: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontFamily: 'Nature-Regular',
   },
 });

@@ -33,7 +33,9 @@ export default function diinkerHeader() {
         <Text style={styles.headerSubtitle}>Your profile, all in one place</Text>
       </View>
       <View style={styles.iconContainer}>
-        <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>
+        <Pressable onPress={() => Alert.alert("Notifications Triggered", "No new notifications at this time")}>
+          <Image source={megaphoneIcon} style={styles.logoutIcon}></Image>
+        </Pressable>
         <Pressable onPress={handleLogout}>
           <Image source={logoutIcon} style={styles.logoutIcon} />
         </Pressable>
