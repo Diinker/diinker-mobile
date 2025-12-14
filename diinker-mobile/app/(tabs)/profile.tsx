@@ -29,8 +29,12 @@ export default function HomeScreen() {
           </View>
         </View>
         <View style={styles.profileStatsContainer}>
-          <Text style={styles.statsText}>Location: [User&apos;s Location]</Text>
-          <Text style={styles.statsText}>DUPR Rating: [Rating]</Text>
+          <Text style={styles.statsText}><Text style={styles.onlineText}>Home Center:</Text> {'\n'}[Name, City, State]</Text>
+          <Text style={styles.statsText}><Text style={styles.onlineText}>DUPR Rating</Text> {'\n'} [Rating]</Text>
+          <View style={styles.onlineContainer}>
+            <View style={styles.onlineStatus}></View>
+            <Text style={styles.onlineText}>Online</Text>
+          </View>
         </View>
         <View>
           <View style={styles.separator}></View>
@@ -48,8 +52,8 @@ export default function HomeScreen() {
           <View style={styles.separator}></View>
         </View>
         <View style={styles.descriptionContainer}>
-          <Text style={styles.descriptionText}>Home Center: [Name, Location]</Text>
-          <Text style={styles.descriptionText}>Play Style: [Power, Control, Hybrid]</Text>
+          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Player Location:</Text> [Location]</Text>
+          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Play Style:</Text> [Power, Control, Hybrid]</Text>
         </View>
         <View>
           <View style={styles.separator}></View>
@@ -99,9 +103,25 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: "Nature-Light",
   },
+  onlineContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  onlineStatus: {
+    width: 10,
+    height: 10,
+    borderRadius: '100%',
+    backgroundColor: '#09ff00ff',
+  },
+  onlineText: {
+    fontFamily: 'Nature-Regular',
+    color: 'white',
+  },
   separator: {
     backgroundColor: "white",
-    width: "85%",
+    width: "86%",
     height: "2%",
     marginLeft: 30,
     marginRight: 30,
