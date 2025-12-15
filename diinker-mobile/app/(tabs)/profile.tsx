@@ -1,6 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { SplashScreen } from "expo-router";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { auth } from '../../FirebaseConfig';
+import { Image, StyleSheet, Text, View } from "react-native";
 import ProfileHeader from "../../components/Headers/profileHeader";
 const userPlaceholder = require("../../assets/images/pickleball.png");
 const squarePen = require("../../assets/images/square-pen.png");
@@ -8,6 +9,9 @@ const squarePen = require("../../assets/images/square-pen.png");
 SplashScreen.preventAutoHideAsync();
 
 export default function HomeScreen() {
+  if (!auth.currentUser) {
+    return
+  }
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <LinearGradient
@@ -22,7 +26,7 @@ export default function HomeScreen() {
           <Image source={userPlaceholder} style={styles.userImage}></Image>
           <View>
             <Text style={styles.username}>[@username]</Text>
-            <Text style={styles.email}>[email@domain.com]]</Text>
+            <Text style={styles.email}>{auth.currentUser.email}</Text>
           </View>
           <View>
             <Image source={squarePen} style={styles.editIcon}></Image>

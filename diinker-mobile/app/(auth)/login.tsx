@@ -1,6 +1,9 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import { auth } from '../../FirebaseConfig';
+import { signInWithEmailAndPassword } from "firebase/auth";
 import {
+  Alert,
   Image,
   Pressable,
   StyleSheet,
@@ -8,15 +11,29 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { useState } from "react";
 const arrowIcon = require("../../assets/images/arrow-left.png");
 
 export default function Login() {
   const goBack = () => {
     router.replace("/landing");
   };
-  const handleLogin = () => {
-    router.replace("/");
+  const handleLogin = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password)
+      if (user) {
+        router.replace('/(tabs)')
+      }
+    } catch (error: any) {
+      console.log(error);
+      Alert.alert(
+        "Sign in Failed",
+        error.message
+      )
+    }
   };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <LinearGradient
@@ -44,6 +61,8 @@ export default function Login() {
               placeholder="email@example.com"
               autoCapitalize="none"
               placeholderTextColor={"#ffffff6a"}
+              value={email}
+              onChangeText={setEmail}
             />
           </View>
           <View style={styles.fieldWrapper}>
@@ -53,6 +72,8 @@ export default function Login() {
               secureTextEntry={true}
               placeholder="***********"
               placeholderTextColor={"#ffffff6a"}
+              value={password}
+              onChangeText={setPassword}
             />
           </View>
           <View style={styles.fieldWrapper}>

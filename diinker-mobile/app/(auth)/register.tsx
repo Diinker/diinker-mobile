@@ -1,6 +1,9 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import { auth } from '../../FirebaseConfig';
+import { createUserWithEmailAndPassword } from "@firebase/auth";
 import {
+  Alert,
   Image,
   Pressable,
   StyleSheet,
@@ -8,15 +11,29 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { useState } from "react";
 const arrowIcon = require("../../assets/images/arrow-left.png");
 
 export default function Register() {
   const goBack = () => {
     router.replace("/landing");
   };
-  const handleRegister = () => {
-    router.replace("/");
-  };
+  const handleRegister = async () => {
+      try {
+        const user = await createUserWithEmailAndPassword(auth, email, password)
+        if (user) {
+          router.replace('/(tabs)')
+        }
+      } catch (error: any) {
+        console.log(error);
+        Alert.alert(
+          "Sign in Failed",
+          error.message
+        )
+      }
+    };
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <LinearGradient
@@ -39,11 +56,25 @@ export default function Register() {
         <View style={styles.loginFields}>
           <View style={styles.fieldWrapper}>
             <Text style={styles.loginParam}>Your email address</Text>
-            <TextInput style={styles.textInput} />
+            <TextInput
+              style={styles.textInput}
+              placeholder="email@example.com"
+              autoCapitalize="none"
+              placeholderTextColor={'#ffffff6a'}
+              value={email}
+              onChangeText={setEmail}
+            />
           </View>
           <View style={styles.fieldWrapper}>
             <Text style={styles.loginParam}>Your password</Text>
-            <TextInput style={styles.textInput} />
+            <TextInput
+              style={styles.textInput}
+              placeholder="***********"
+              placeholderTextColor={"#ffffff6a"}
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry={true}
+            />
           </View>
           <View style={styles.fieldWrapper}>
             <Pressable style={styles.registerButton} onPress={handleRegister}>
