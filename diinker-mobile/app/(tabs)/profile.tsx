@@ -3,6 +3,7 @@ import { SplashScreen } from "expo-router";
 import { auth } from '../../FirebaseConfig';
 import { Image, StyleSheet, Text, View } from "react-native";
 import ProfileHeader from "../../components/Headers/profileHeader";
+import { ActiveTargetMap } from '../../node_modules/@firebase/firestore/dist/firestore/test/unit/specs/spec_builder.d';
 const userPlaceholder = require("../../assets/images/pickleball.png");
 const squarePen = require("../../assets/images/square-pen.png");
 
@@ -10,8 +11,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function HomeScreen() {
   if (!auth.currentUser) {
-    return
+    console.error("No user is currently active");
+    return;
   }
+  const userName = auth.currentUser.email.split('@')[0];
+  const userEmail = auth.currentUser.email;
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <LinearGradient
@@ -25,15 +29,15 @@ export default function HomeScreen() {
         <View style={styles.userInfoContainer}>
           <Image source={userPlaceholder} style={styles.userImage}></Image>
           <View>
-            <Text style={styles.username}>[@username]</Text>
-            <Text style={styles.email}>{auth.currentUser.email}</Text>
+            <Text style={styles.username}>@{userName}</Text>
+            <Text style={styles.email}>{userEmail}</Text>
           </View>
           <View>
             <Image source={squarePen} style={styles.editIcon}></Image>
           </View>
         </View>
         <View style={styles.profileStatsContainer}>
-          <Text style={styles.statsText}><Text style={styles.onlineText}>Home Center:</Text> {'\n'}[Name, City, State]</Text>
+          <Text style={styles.statsText}><Text style={styles.onlineText}>Home Center:</Text> {'\n'}[Name]</Text>
           <Text style={styles.statsText}><Text style={styles.onlineText}>DUPR Rating</Text> {'\n'} [Rating]</Text>
           <View style={styles.onlineContainer}>
             <View style={styles.onlineStatus}></View>
@@ -57,7 +61,16 @@ export default function HomeScreen() {
         </View>
         <View style={styles.descriptionContainer}>
           <Text style={styles.descriptionText}><Text style={styles.onlineText}>Player Location:</Text> [Location]</Text>
+          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Travel Range:</Text> [Range]</Text>
+          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Availability:</Text> [Availability]</Text>
+        </View>
+        <View>
+          <View style={styles.separator}></View>
+        </View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Game Style:</Text> [Competetive, Casual, League Play]</Text>
           <Text style={styles.descriptionText}><Text style={styles.onlineText}>Play Style:</Text> [Power, Control, Hybrid]</Text>
+          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Hand:</Text> [Left Handed, Right Handed]</Text>
         </View>
         <View>
           <View style={styles.separator}></View>
@@ -79,7 +92,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     flexDirection: "row",
-    paddingTop: 20,
     paddingLeft: 20,
   },
   username: {

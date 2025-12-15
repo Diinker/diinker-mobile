@@ -34,7 +34,7 @@ export default function diinkerHeader() {
     <View style={styles.headerContainer}>
       <View style={styles.textContainer}>
         <Text style={styles.headerName}>diinker</Text>
-        <Text style={styles.headerSubtitle}>Welcome, {auth.currentUser.email}!</Text>
+        <Text style={styles.headerSubtitle}>Welcome, {auth.currentUser.email?.split('@')[0]}!</Text>
       </View>
       <View style={styles.iconContainer}>
         <Pressable
