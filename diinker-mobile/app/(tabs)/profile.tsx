@@ -1,9 +1,9 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { SplashScreen } from "expo-router";
-import { auth } from '../../FirebaseConfig';
+import { auth } from "../../FirebaseConfig";
 import { Image, StyleSheet, Text, View } from "react-native";
 import ProfileHeader from "../../components/Headers/profileHeader";
-import { ActiveTargetMap } from '../../node_modules/@firebase/firestore/dist/firestore/test/unit/specs/spec_builder.d';
+import { ActiveTargetMap } from "../../node_modules/@firebase/firestore/dist/firestore/test/unit/specs/spec_builder.d";
 const userPlaceholder = require("../../assets/images/pickleball.png");
 const squarePen = require("../../assets/images/square-pen.png");
 
@@ -14,8 +14,8 @@ export default function HomeScreen() {
     console.error("No user is currently active");
     return;
   }
-  const userName = auth.currentUser.email.split('@')[0];
-  const userEmail = auth.currentUser.email;
+  const userName = auth.currentUser.email?.split("@")[0] ?? "User";
+  const userEmail = auth.currentUser.email ?? "";
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <LinearGradient
@@ -37,8 +37,12 @@ export default function HomeScreen() {
           </View>
         </View>
         <View style={styles.profileStatsContainer}>
-          <Text style={styles.statsText}><Text style={styles.onlineText}>Home Center:</Text> {'\n'}[Name]</Text>
-          <Text style={styles.statsText}><Text style={styles.onlineText}>DUPR Rating</Text> {'\n'} [Rating]</Text>
+          <Text style={styles.statsText}>
+            <Text style={styles.onlineText}>Home Center:</Text> {"\n"}[Name]
+          </Text>
+          <Text style={styles.statsText}>
+            <Text style={styles.onlineText}>DUPR Rating</Text> {"\n"}[Rating]
+          </Text>
           <View style={styles.onlineContainer}>
             <View style={styles.onlineStatus}></View>
             <Text style={styles.onlineText}>Online</Text>
@@ -60,17 +64,32 @@ export default function HomeScreen() {
           <View style={styles.separator}></View>
         </View>
         <View style={styles.descriptionContainer}>
-          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Player Location:</Text> [Location]</Text>
-          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Travel Range:</Text> [Range]</Text>
-          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Availability:</Text> [Availability]</Text>
+          <Text style={styles.descriptionText}>
+            <Text style={styles.onlineText}>Player Location:</Text> [Location]
+          </Text>
+          <Text style={styles.descriptionText}>
+            <Text style={styles.onlineText}>Travel Range:</Text> [Range]
+          </Text>
+          <Text style={styles.descriptionText}>
+            <Text style={styles.onlineText}>Availability:</Text> [Availability]
+          </Text>
         </View>
         <View>
           <View style={styles.separator}></View>
         </View>
         <View style={styles.descriptionContainer}>
-          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Game Style:</Text> [Competetive, Casual, League Play]</Text>
-          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Play Style:</Text> [Power, Control, Hybrid]</Text>
-          <Text style={styles.descriptionText}><Text style={styles.onlineText}>Hand:</Text> [Left Handed, Right Handed]</Text>
+          <Text style={styles.descriptionText}>
+            <Text style={styles.onlineText}>Game Style:</Text> [Competetive,
+            Casual, League Play]
+          </Text>
+          <Text style={styles.descriptionText}>
+            <Text style={styles.onlineText}>Play Style:</Text> [Power, Control,
+            Hybrid]
+          </Text>
+          <Text style={styles.descriptionText}>
+            <Text style={styles.onlineText}>Hand:</Text> [Left Handed, Right
+            Handed]
+          </Text>
         </View>
         <View>
           <View style={styles.separator}></View>
@@ -120,20 +139,20 @@ const styles = StyleSheet.create({
     fontFamily: "Nature-Light",
   },
   onlineContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
     gap: 5,
   },
   onlineStatus: {
     width: 10,
     height: 10,
-    borderRadius: '100%',
-    backgroundColor: '#09ff00ff',
+    borderRadius: "100%",
+    backgroundColor: "#09ff00ff",
   },
   onlineText: {
-    fontFamily: 'Nature-Regular',
-    color: 'white',
+    fontFamily: "Nature-Regular",
+    color: "white",
   },
   separator: {
     backgroundColor: "white",
@@ -144,16 +163,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   bioText: {
-    color: 'white',
-    fontFamily: 'Nature-Light',
+    color: "white",
+    fontFamily: "Nature-Light",
     paddingHorizontal: 30,
   },
   descriptionContainer: {
     gap: 5,
   },
   descriptionText: {
-    color: 'white',
-    fontFamily: 'Nature-Light',
+    color: "white",
+    fontFamily: "Nature-Light",
     paddingHorizontal: 30,
   },
 });
