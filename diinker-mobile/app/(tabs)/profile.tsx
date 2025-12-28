@@ -1,10 +1,10 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { SplashScreen } from "expo-router";
+import { SplashScreen, router } from "expo-router";
 import { auth } from "../../FirebaseConfig";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import ProfileHeader from "../../components/Headers/profileHeader";
 import { ActiveTargetMap } from "../../node_modules/@firebase/firestore/dist/firestore/test/unit/specs/spec_builder.d";
-const userPlaceholder = require("../../assets/images/pickleball.png");
+const zack = require("../../assets/images/zack.jpeg");
 const squarePen = require("../../assets/images/square-pen.png");
 
 SplashScreen.preventAutoHideAsync();
@@ -16,6 +16,9 @@ export default function HomeScreen() {
   }
   const userName = auth.currentUser.email?.split("@")[0] ?? "User";
   const userEmail = auth.currentUser.email ?? "";
+  const editProfile = () => {
+    router.push("/editProfile");
+  }
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <LinearGradient
@@ -27,14 +30,14 @@ export default function HomeScreen() {
         {/* MAIN CONTENT */}
         <ProfileHeader />
         <View style={styles.userInfoContainer}>
-          <Image source={userPlaceholder} style={styles.userImage}></Image>
+          <Image source={zack} style={styles.userImage}></Image>
           <View>
             <Text style={styles.username}>@{userName}</Text>
             <Text style={styles.email}>{userEmail}</Text>
           </View>
-          <View>
+          <Pressable onPress={editProfile}>
             <Image source={squarePen} style={styles.editIcon}></Image>
-          </View>
+          </Pressable>
         </View>
         <View style={styles.profileStatsContainer}>
           <Text style={styles.statsText}>
@@ -101,17 +104,18 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   userImage: {
-    width: 70,
-    height: 70,
-    marginVertical: 5,
+    width: 60,
+    height: 60,
+    marginVertical: 10,
     marginRight: 5,
+    borderRadius: '100%',
   },
   userInfoContainer: {
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
     flexDirection: "row",
-    paddingLeft: 20,
+    paddingLeft: 30,
   },
   username: {
     color: "white",
