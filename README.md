@@ -1,2 +1,2 @@
-# diinker-mobile
-Diinker Mobile App
+# mojo-mobile
+Mojo Mobile App
